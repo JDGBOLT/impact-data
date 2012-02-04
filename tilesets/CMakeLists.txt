@@ -7,6 +7,7 @@
 # Set variable to add files to build process
 SET(CURDIR tilesets)
 SET(TILESETS_FILES
+   "${CURDIR}/tilesets.json"
    PARENT_SCOPE)
 
 
