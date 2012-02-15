@@ -8,8 +8,6 @@ SET(CURDIR chapters)
 
 # Set variable to add files to build process
 SET(CHAPTERS_FILES
-   "${CURDIR}/chapters.json"
-   "${CURDIR}/chapter1.json"
    PARENT_SCOPE)
 
 

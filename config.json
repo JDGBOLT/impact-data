@@ -1,4 +1,7 @@
 {
-   "ChapterList": "chapters/chapters",
-   "TilesetList": "tilesets/tilesets"
+ "ChaptersDirectory": "chapters",
+ "ImagesDirectory": "images",
+ "MusicDirectory": "music",
+ "SoundsDirectory": "sounds",
+ "TilesetsDirectory": "tilesets"
 }
