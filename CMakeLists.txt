@@ -30,6 +30,16 @@ FOREACH(DATA_FILE ${DATA_FILES})
       COPYONLY)
 ENDFOREACH()
 
+# Set Cross Compilation settings to enable lz4comp to run when cross compiling
+if (CMAKE_CROSSCOMPILING)
+   SET(LZ4COMP_CROSSFILE "${CMAKE_BINARY_DIR}/../build/lz4comp_crossfile.cmake" CACHE FILEPATH
+      "Location of lz4comp file to be used during cross compiling")
+   INCLUDE(${LZ4COMP_CROSSFILE})
+   SET(LZ4COMP_BINARY native-lz4comp)
+else (CMAKE_CROSSCOMPILING)
+   SET(LZ4COMP_BINARY lz4comp)
+endif (CMAKE_CROSSCOMPILING)
+
 # Set variable for textual data files to be compressed with LZ4
 FILE(GLOB_RECURSE CONF_FILES RELATIVE
    ${CMAKE_CURRENT_BINARY_DIR} "${CMAKE_CURRENT_BINARY_DIR}/*.json")
@@ -41,11 +51,11 @@ FOREACH(CONF_FILE ${CONF_FILES})
    # Add custom command to compress with lz4comp
    ADD_CUSTOM_COMMAND(
       OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE_OUT}"    # Output File
-      COMMAND "${CMAKE_CURRENT_BINARY_DIR}/lz4comp"            # Command Name
+      COMMAND "${LZ4COMP_BINARY}"                              # Command Name
       "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE}"               # IN
       "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE_OUT}"           # OUT
       DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE}"       # Depends on lz4comp
-      ${CMAKE_CURRENT_BINARY_DIR}/lz4comp COMMENT "Compress File: ${CONF_FILE}"
+      "${LZ4COMP_BINARY}" COMMENT "Compress File: ${CONF_FILE}"
    )
    # Create a list of files to be used for the custom target
    SET(CONF_FILES_OUT ${CONF_FILES_OUT} "${CONF_FILE_OUT}")
