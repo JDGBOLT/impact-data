@@ -10,6 +10,8 @@ ADD_SUBDIRECTORY(tilesets)
 ADD_SUBDIRECTORY(images)
 ADD_SUBDIRECTORY(music)
 ADD_SUBDIRECTORY(sounds)
+ADD_SUBDIRECTORY(assets)
+ADD_SUBDIRECTORY(games)
 
 # Set variable to have a list of data files to copy over during build 
 SET(DATA_FILES
@@ -19,6 +21,8 @@ SET(DATA_FILES
    ${IMAGES_FILES}
    ${MUSIC_FILES}
    ${SOUNDS_FILES}
+   ${ASSETS_FILES}
+   ${GAMES_FILES}
 )
 
 
