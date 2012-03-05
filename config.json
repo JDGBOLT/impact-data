@@ -1,5 +1,7 @@
 {
+ "AssetsDirectory": "assets",
  "ChaptersDirectory": "chapters",
+ "GamesDirectory": "games",
  "ImagesDirectory": "images",
  "MusicDirectory": "music",
  "SoundsDirectory": "sounds",
