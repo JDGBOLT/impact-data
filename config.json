@@ -1,6 +1,7 @@
 {
  "AssetsDirectory": "assets",
  "ChaptersDirectory": "chapters",
+ "DefaultGame": "impact",
  "GamesDirectory": "games",
  "ImagesDirectory": "images",
  "MusicDirectory": "music",
