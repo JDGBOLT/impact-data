@@ -10,6 +10,8 @@ ADD_SUBDIRECTORY(tilesets)
 ADD_SUBDIRECTORY(images)
 ADD_SUBDIRECTORY(music)
 ADD_SUBDIRECTORY(sounds)
+ADD_SUBDIRECTORY(assets)
+ADD_SUBDIRECTORY(games)
 
 # Set variable to have a list of data files to copy over during build 
 SET(DATA_FILES
@@ -19,6 +21,8 @@ SET(DATA_FILES
    ${IMAGES_FILES}
    ${MUSIC_FILES}
    ${SOUNDS_FILES}
+   ${ASSETS_FILES}
+   ${GAMES_FILES}
 )
 
 
@@ -51,7 +55,7 @@ FOREACH(CONF_FILE ${CONF_FILES})
    # Add custom command to compress with lz4comp
    ADD_CUSTOM_COMMAND(
       OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE_OUT}"    # Output File
-      COMMAND "${LZ4COMP_BINARY}"                              # Command Name
+      COMMAND "${LZ4COMP_BINARY}" -jc                          # Command Name
       "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE}"               # IN
       "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE_OUT}"           # OUT
       DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${CONF_FILE}"       # Depends on lz4comp
