@@ -76,5 +76,8 @@ INSTALL(DIRECTORY
    PATTERN "Makefile" EXCLUDE
    PATTERN "CMakeFiles" EXCLUDE
    PATTERN "cmake_install.cmake" EXCLUDE
+   PATTERN "*.vcxproj*" EXCLUDE
+   PATTERN "*.rule" EXCLUDE
+   PATTERN "Win32" EXCLUDE
 )
 
